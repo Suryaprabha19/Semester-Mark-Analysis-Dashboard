@@ -1,62 +1,117 @@
-# 🎓 CSE Semester 1 - Marks Dashboard Analysis
-
-This interactive **Excel Dashboard** represents the academic performance of **63 students** from the **CSE Department** in their **First Semester**. It offers a clear, visual summary of pass/fail data across subjects and student-wise performance.
-
----
-
-## 📌 Highlights
-
-- 🎯 **Total Students**: `63`
-- 📈 **Overall Pass Percentage**: 89%
-- ❌ **Fail Count**: 7 students (11%)
+# 🎓 CSE Sem1 Marks Dashboard Analysis
+An Excel-based academic marks analysis and dashboard for **63 CSE Semester 1 students**, featuring subject-wise Pass/Fail pie charts, overall performance tracking, CGPA calculation, and an interactive student filter.
 
 ---
 
-## 📊 Subject-wise Pass Percentage
+## 📁 File
 
-| Subject Code | Subject     | Pass % | Fail Count |
-|--------------|-------------|--------|------------|
-| GE3172       | Engineering Practices Lab | 100%  | 0          |
-| MA3151       | Engineering Mathematics-I | 97%   | 2          |
-| BS3171       | Physics and Chemistry Lab | 100%  | 0          |
-| HS3152       | Professional English-I    | 100%  | 0          |
-| GE3152       | Problem Solving and Python Programming Lab | 98% | 1 |
-| GE3151       | Problem Solving and Python Programming | 97% | 2 |
-| CY3151       | Engineering Chemistry      | 98%   | 1          |
-| PH3151       | Engineering Physics        | 94%   | 4          |
-
-> ✅ Note: All lab subjects (GE3172, BS3171, GE3152) show excellent performance with near or full pass rates.
+```
+Sem1_Marks.xlsx
+```
 
 ---
 
-## 🧑‍🎓 Student Filter Feature
+## 🗂️ Workbook Structure
 
-A slicer-based filter enables quick analysis of **individual student performance** by selecting names such as:
-- VELMURUGAN R
-- SURYAPRABHA P J
-- SURENDRAN P
-- SUDHARSANAM P
-- SUBHASRI M
-*(and others)*
+The workbook contains **15 sheets** organized as follows:
 
----
-
-## 🛠️ Tools & Techniques Used
-
-- **Microsoft Excel**
-- Pivot Charts & Tables
-- Slicers for dynamic filtering
-- Pie charts for pass/fail ratio
-- Interactive visual analytics
+| Sheet | Purpose |
+|-------|---------|
+| `Marks` | Master data — student register numbers, names, grades, CGPA, pass/fail formulas |
+| `Dashboard` | Visual dashboard with pie charts and student slicer |
+| `Sheet2–Sheet14` | Pivot tables powering each subject's Pass/Fail chart |
 
 ---
 
-## 🏫 Created By
 
-**Department of Computer Science and Engineering**  
-Semester I Dashboard Project
-**Academic Year:** 2023
+## 📊 Dashboard Overview
 
+The dashboard provides:
+
+- **Total Students** — 63
+- **Overall Pass vs Fail** pie chart — 56 Pass (89%), 7 Fail (11%)
+- **Subject-wise Pass/Fail** pie charts for all 9 subjects
+- **Interactive Student Name Slicer** — filter all charts by individual student
+
+### Subject-wise Pass/Fail Summary
+
+| Subject | Pass | Fail | Pass % |
+|---------|------|------|--------|
+| GE3172 (Lab) | 63 | 0 | 100% |
+| HS3152 | 63 | 0 | 100% |
+| BS3171 | 63 | 0 | 100% |
+| MA3151 | 61 | 2 | 97% |
+| GE3151 | 61 | 2 | 97% |
+| GE3152 | 60 | 3 | 95% |
+| CY3151 | 62 | 1 | 98% |
+| PH3151 | 59 | 4 | 94% |
+| **Overall** | **56** | **7** | **89%** |
 
 ---
 
+## 🧮 How the Marks Sheet Works
+
+### Grade to Points Conversion
+Each subject grade is converted to grade points using nested `IF` formulas:
+
+```
+O  → 10
+A+ → 9
+A  → 8
+B+ → 7
+B  → 6
+C  → 5
+U  → 0  (Fail)
+```
+
+### Pass/Fail Logic
+- **Theory subjects** — Pass if grade is O, A+, A, B+, B, or C; Fail only if U
+- **Lab subjects** — Pass if grade is not U
+- **Overall** — Fail if any single subject grade point equals 0
+
+### CGPA
+Each student's CGPA is pre-calculated and stored in the `CGPA` column.
+
+---
+
+## 🔍 Key Columns in the `Marks` Sheet
+
+| Column | Description |
+|--------|-------------|
+| Register Number | Student's unique ID (e.g., 953623104002) |
+| Name of the Student | Full name |
+| HS3152 – GE3172 | Letter grades for each subject |
+| CGPA | Cumulative Grade Point Average |
+| English – Eng Lab | Numeric grade points (formula-computed) |
+| Eng – EL | Pass/Fail status per subject (formula-computed) |
+| Overall | Overall Pass/Fail result |
+
+---
+
+## ✨ Features
+
+- 📌 **Interactive slicer** to filter all charts by student name
+- 🥧 **9 subject-wise pie charts** showing Pass/Fail distribution
+- 📐 **Formula-driven** — grade points and pass/fail auto-update when grades change
+- 🏫 Designed for **CSE Department** academic reporting
+
+---
+
+## 🛠️ Tools Used
+
+- **Microsoft Excel** — Pivot Tables, Pie Charts, Slicers, IF Formulas
+
+---
+
+## 📝 Notes
+
+- A student is marked **Fail overall** only if they have a `U` in **any single subject**.
+- Lab subjects (GE3171, BS3171, GE3172) achieved a **100% pass rate**.
+- **PH3151 (Physics)** had the most failures — 4 students (6%).
+- Data belongs to the **CSE Department, Batch 2023**, Semester 1.
+
+---
+
+## 📄 License
+
+This file is intended for internal academic use by the Department of CSE.
